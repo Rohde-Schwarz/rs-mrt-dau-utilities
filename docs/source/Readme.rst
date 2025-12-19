@@ -1,5 +1,5 @@
-Revision History
-======================
+Introduction
+============
 
 .. include:: ../../README.rst
     

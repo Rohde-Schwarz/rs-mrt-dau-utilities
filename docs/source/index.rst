@@ -7,15 +7,16 @@ Module who contains utilities for the R&S DAU measurements (e.g. IP analysis, De
 
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Contents:
 
    Readme
-   apidocs/modules
+   Ipanalysis
+   RsMrtDauUtilities
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
+.. * :ref:`modindex`
 * :ref:`search`

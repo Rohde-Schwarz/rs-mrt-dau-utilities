@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.abspath(".."))
 project = "rs_mrt_dau_utilities"
 copyright = "2025, Rohde & Schwarz"
 author = "Rohde & Schwarz"
+master_doc = "index"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -33,4 +34,4 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_rtd_theme"
-html_static_path = ["_static"]
+# html_static_path = ["_static"]

@@ -1,0 +1,53 @@
+[project]
+name = "rs-mrt-dau-utilities"
+version = "0.2.6"
+license = "MIT"
+description = "Helpers to process and visualize measurement data from Rohde & Schwarz MRT DAU"
+readme = "README.rst"
+authors = [
+    { name = "Didier Chagniot", email = "didier.chagniot@rohde-schwarz.com" },
+]
+requires-python = ">=3.11"
+dependencies = ["altair>=5.5.0", "fast-json-normalize>=0.0.9", "polars==1.35.2"]
+
+classifiers = [
+    # How mature is this project? Common values are
+    #   4 - Beta
+    #   5 - Production/Stable
+    "Development Status :: 5 - Production/Stable",
+
+    # Indicate who your project is intended for
+    "Intended Audience :: Developers",
+
+    # Specify the Python versions you support here.
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+[build-system]
+requires = ["uv_build>=0.7.5"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.1",
+    "ruff>=0.11.11",
+    "sphinx>=8.1.3",
+    "sphinx-autodoc-typehints>=1.22.0",
+    "sphinx-rtd-theme>=1.3.0",
+]
+
+[tool.mypy]
+exclude = ["docs", "tests"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[project.urls]
+Documentation = "https://rs-mrt-dau-utilities.readthedocs.io/"
+Repository = "https://github.com/Rohde-Schwarz/rs-mrt-dau-utilities"

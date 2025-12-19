@@ -1,4 +1,7 @@
 # pyvisa
+fast_json_normalize
+polars
+altair
 docutils
 sphinx-copybutton
 recommonmark

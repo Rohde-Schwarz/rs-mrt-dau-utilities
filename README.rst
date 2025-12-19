@@ -59,15 +59,18 @@ You can install the package via pip:
 
    pip install rs-mrt-dau-utilities
 
-Check out the full documentation on `ReadTheDocs <https://rs-mrt-dau-utilities.readthedocs.io/>`_.
+Note on Windows: You need the following additional dependencies if you get the error below:
+.. code-block:: bash
 
-Our public `Rohde&Schwarz Github repository <https://github.com/Rohde-Schwarz/Examples/tree/main/Misc/Python/rs-mrt-dau-utilities>`_ hosts many examples using this library.
-If you're looking for examples with specific instruments, check out the ones for
-`Oscilloscopes <https://github.com/Rohde-Schwarz/Examples/tree/main/Oscilloscopes/Python/RsInstrument>`_,
-`Powersensors <https://github.com/Rohde-Schwarz/Examples/tree/main/Powersensors/Python/RsInstrument>`_,
-`Powersupplies <https://github.com/Rohde-Schwarz/Examples/tree/main/Powersupplies/Python/RsInstrument>`_,
-`Spectrum Analyzers <https://github.com/Rohde-Schwarz/Examples/tree/main/SpectrumAnalyzers/Python/RsInstrument>`_,
-`Vector Network Analyzers <https://github.com/Rohde-Schwarz/Examples/tree/main/VectorNetworkAnalyzers/Python/RsInstrument>`_.
+   error: Microsoft Visual C++ 14.0 or greater is required. Get it with "Microsoft C++ Build Tools": https://visualstudio.microsoft.com/visual-cpp-build-tools/
+
+You can install them with this command:
+.. code-block:: bash
+
+   vs_buildtools.exe --norestart --passive --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Workload.MSBuildTools
+
+
+Check out the full documentation on `ReadTheDocs <https://rs-mrt-dau-utilities.readthedocs.io/>`_.
 
 
 Version history:

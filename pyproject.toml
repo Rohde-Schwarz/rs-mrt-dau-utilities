@@ -1,6 +1,6 @@
 [project]
 name = "rs-mrt-dau-utilities"
-version = "0.2.7"
+version = "0.5.0"
 license = "MIT"
 description = "Helpers to process and visualize measurement data from Rohde & Schwarz MRT DAU"
 readme = "README.rst"

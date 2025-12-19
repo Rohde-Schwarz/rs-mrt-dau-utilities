@@ -12,6 +12,7 @@ Module who contains utilities for the R&S DAU measurements (e.g. IP analysis, De
 
    Readme
    Ipanalysis
+   DelayMeas
    RsMrtDauUtilities
 
 Indices and tables

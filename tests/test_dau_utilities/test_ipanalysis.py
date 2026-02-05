@@ -296,6 +296,152 @@ def test_ipanalysis_update_dataframes_flow_started():
     assert list_of_dfs["flow_started"].width == 15
 
 
+def test_different_reports_length():
+    # Initialize the DataFrames using the ipanalysis_init_dataframes function
+    list_of_dfs = ipanalysis_init_dataframes()
+    first_report = {
+        "REPORT": {"flows_stat": [], "time": {"secs": 1721052473, "nanos": 194737000}}
+    }
+    list_of_dfs = ipanalysis_update_dataframes(list_of_dfs, first_report)
+
+    report_ip_json = """
+    {
+        "REPORT": {
+            "flows_stat": [
+                {
+                    "flow_id": 8704,
+                    "ip": {
+                        "packet_size_src_dst": {"min": 52, "max": 198, "avg": 82},
+                        "packet_size_dst_src": {"min": 52, "max": 174, "avg": 78},
+                        "throughput_src_dst": {
+                            "bps_min": 28184,
+                            "bps_max": 78096,
+                            "bps_avg": 52800
+                        },
+                        "throughput_dst_src": {
+                            "bps_min": 13856,
+                            "bps_max": 697392,
+                            "bps_avg": 49552
+                        },
+                        "throughput_interval_bps_src_dst": 0,
+                        "throughput_interval_bps_dst_src": 0,
+                        "interval_duration_ms_src_dst": 0,
+                        "interval_duration_ms_dst_src": 0,
+                        "packet_count_src_dst": 5,
+                        "packet_count_dst_src": 5,
+                        "bytes_src_dst": 414,
+                        "bytes_dst_src": 390
+                    },
+                    "tcp": null,
+                    "rtp": null,
+                    "amr": null,
+                    "evs": null,
+                    "is_high_speed": false
+                }
+            ],
+            "time": {"secs": 1721052476, "nanos": 695730000}
+        }
+    }
+    """
+    report_ip = json.loads(report_ip_json)
+    list_of_dfs = ipanalysis_update_dataframes(list_of_dfs, report_ip)
+    assert list_of_dfs["report"].height == 1
+    assert list_of_dfs["report"].width == 27
+
+    report_ip_tcp_json = """
+    {
+        "REPORT": {
+            "flows_stat": [
+                {
+                    "flow_id": 8705,
+                    "ip": {
+                        "packet_size_src_dst": {"min": 52, "max": 198, "avg": 82},
+                        "packet_size_dst_src": {"min": 52, "max": 174, "avg": 78},
+                        "throughput_src_dst": {
+                            "bps_min": 28184,
+                            "bps_max": 78096,
+                            "bps_avg": 52800
+                        },
+                        "throughput_dst_src": {
+                            "bps_min": 13856,
+                            "bps_max": 697392,
+                            "bps_avg": 49552
+                        },
+                        "throughput_interval_bps_src_dst": 0,
+                        "throughput_interval_bps_dst_src": 0,
+                        "interval_duration_ms_src_dst": 0,
+                        "interval_duration_ms_dst_src": 0,
+                        "packet_count_src_dst": 5,
+                        "packet_count_dst_src": 5,
+                        "bytes_src_dst": 414,
+                        "bytes_dst_src": 390
+                    },
+                    "tcp": {
+                        "window_size_packet_count_src_dst": {
+                            "min": 65535,
+                            "max": 65536,
+                            "avg": 65535,
+                            "cur": 65536
+                        },
+                        "window_size_packet_count_dst_src": {
+                            "min": 65535,
+                            "max": 67584,
+                            "avg": 66217,
+                            "cur": 67584
+                        },
+                        "window_scale_src_dst": 8,
+                        "window_scale_dst_src": 10,
+                        "network_limit_bps": 9413280000,
+                        "throughput_max_bps_src_dst": 43690664,
+                        "throughput_max_bps_dst_src": 30037328,
+                        "max_segment_size": 1412,
+                        "window_update_packet_count_src_dst": 0,
+                        "window_update_packet_count_dst_src": 0,
+                        "zero_window_packet_count_src_dst": 0,
+                        "zero_window_packet_count_dst_src": 0,
+                        "timeout_retransmissions_packet_count_src_dst": 0,
+                        "timeout_retransmissions_packet_count_dst_src": 0,
+                        "fast_retransmissions_packet_count_src_dst": 0,
+                        "fast_retransmissions_packet_count_dst_src": 0,
+                        "ramp_up_time_src_dst": 0,
+                        "ramp_up_time_dst_src": 61,
+                        "ramp_up_drop_time_src_dst": 0,
+                        "ramp_up_drop_time_dst_src": 0,
+                        "out_of_order_packet_count_src_dst": 0,
+                        "out_of_order_packet_count_dst_src": 0,
+                        "round_trip_time_src_dst": {
+                            "ms_min": 12,
+                            "ms_max": 13,
+                            "ms_avg": 13,
+                            "ms_cur": 12
+                        },
+                        "round_trip_time_dst_src": {
+                            "ms_min": 17,
+                            "ms_max": 18,
+                            "ms_avg": 18,
+                            "ms_cur": 18
+                        },
+                        "connection_state_client": 3,
+                        "connection_state_server": 3,
+                        "jitter_src_dst": {"ms2_min": 0, "ms2_max": 0, "ms2_var": 0},
+                        "jitter_dst_src": {"ms2_min": 0, "ms2_max": 0, "ms2_var": 0}
+                    },
+                    "rtp": null,
+                    "amr": null,
+                    "evs": null,
+                    "is_high_speed": false
+                }
+            ],
+            "time": {"secs": 1721052477, "nanos": 695730000}
+        }
+    }
+    """
+    report_ip_tcp = json.loads(report_ip_tcp_json)
+    list_of_dfs = ipanalysis_update_dataframes(list_of_dfs, report_ip_tcp)
+    assert list_of_dfs["report"].height == 2
+    assert list_of_dfs["report"].width == 71
+
+
 # def test_report_message(setup_dataframes):
 #    message = {
 #        "REPORT": {

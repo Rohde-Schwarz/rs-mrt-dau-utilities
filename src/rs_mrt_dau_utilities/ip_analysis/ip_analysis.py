@@ -131,6 +131,7 @@ def ipanalysis_init_dataframes() -> dict[str, pl.DataFrame]:
         "upd_classification": pl.DataFrame(),
         "upd_network": pl.DataFrame(),
         "upd_fqdn": pl.DataFrame(),
+        "upd_ssl": pl.DataFrame(),
         "flow_closed": pl.DataFrame(),
     }
 
@@ -176,6 +177,10 @@ def ipanalysis_update_dataframes(
     elif "UPDATE_FQDN" in data:
         msgs = [data["UPDATE_FQDN"]]
         key = "upd_fqdn"
+    # test for a FQDN
+    elif "UPDATE_SSL" in data:
+        msgs = [data["UPDATE_SSL"]]
+        key = "upd_ssl"
     # test for a FLOW_CLOSED
     elif "FLOW_CLOSED" in data:
         msgs = [data["FLOW_CLOSED"]]

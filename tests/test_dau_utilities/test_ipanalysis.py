@@ -232,6 +232,7 @@ def test_ipanalysis_init_dataframes():
         "upd_classification",
         "upd_network",
         "upd_fqdn",
+        "upd_ssl",
         "flow_closed",
     ]
     assert set(result.keys()) == set(expected_keys)

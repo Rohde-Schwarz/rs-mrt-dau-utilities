@@ -71,10 +71,3 @@ You can install them with this command:
 
 
 Check out the full documentation on `ReadTheDocs <https://rs-mrt-dau-utilities.readthedocs.io/>`_.
-
-
-Version history:
-----------------
-
-    Version 0.2.0 (14.11.2025)
-        - initial release.

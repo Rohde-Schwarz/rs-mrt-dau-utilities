@@ -35,7 +35,7 @@ jobs:
       
       - name: Run type checking with mypy
         run: |
-          uv run mypy src/
+          uv run mypy src/ --install-types --non-interactive
       
       - name: Run tests with pytest
         run: |

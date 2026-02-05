@@ -186,16 +186,16 @@ def ipanalysis_update_dataframes(
         # test if 'time' key has not been replaced
         if isinstance(i["time"], dict):
             i["time"] = i["time"]["secs"] * 1000000000 + i["time"]["nanos"]
-        msg_df = fast_json_normalize.fast_json_normalize(
+        msg_norm = fast_json_normalize.fast_json_normalize(
             i,
             separator="_",
             to_pandas=False,
             order_to_pandas=False,
         )
         # convert the time to datetime with the correct timezone
-        msg_df = pl.DataFrame(msg_df).with_columns(
+        msg_df = pl.from_dicts([msg_norm]).with_columns(
             time=pl.from_epoch("time", time_unit="ns").dt.replace_time_zone("UTC")
         )
-        list_of_dfs[key] = pl.concat([list_of_dfs[key], msg_df], how="diagonal")
+        list_of_dfs[key] = pl.concat([list_of_dfs[key], msg_df], how="diagonal_relaxed")
 
     return list_of_dfs

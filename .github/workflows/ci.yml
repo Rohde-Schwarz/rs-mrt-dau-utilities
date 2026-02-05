@@ -69,9 +69,7 @@ jobs:
       
       - name: Check package metadata
         run: |
-          uv run twine check dist/*
-        env:
-          UV_PROJECT: "twine"
+          uv tool run twine check dist/*
       
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
